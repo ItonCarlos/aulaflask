@@ -1,5 +1,9 @@
 from flask import Flask, render_template
+from asgiref.wsgi import WsgiToAsgi
 import pandas as pd
+import os
+
+TITULO = os.getenv("TITULO")
 
 app = Flask(__name__)
 
@@ -26,11 +30,7 @@ def ola():
 def curriculo():
     return render_template('curriculo.html')
 
-'''@app.route('/tabela')
-def tab():
-    base_tabela = 'tabela_livros.csv'
-    df = pd.read_csv(base_tabela)
-    return render_template('tabela_livro.html', titulo='Listagem de Livros',lista_de_livros=df)'''
+
 
 @app.route('/tabela')
 def tabela():
@@ -40,4 +40,7 @@ def tabela():
 
 
 
-app.run(debug=True)
+asgi_app = WsgiToAsgi(app)
+
+if __name__ == "__main__":
+    app.run()
