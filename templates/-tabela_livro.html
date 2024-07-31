@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Charset utf-8 para corrigir problemas de caracter especiais -->
+    <meta charset="utf-8" />
+    <title>Biblioteca</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
+
+    <!-- Estilo usando CDN para o bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+
+    <!-- Estilo usando CSS interno -->
+    <style>
+      footer {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Listagem de Livros - SENAI</h1>
+      </div>
+      <a class="url" href="/curriculo">Currículo</a><br />
+      <table class="table table-striped table-hover">
+        <thead class="thead-default">
+          <tr>
+            <th>Livro</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for livro in lista_de_livros %}
+          <tr>
+            <td>{{ livro.titulo }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <footer>
+      <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var table = document.querySelector(".table");
+        var dataTable = new DataTable(table, {
+          // Opções de configuração
+          sortable: true,
+          searchable: true,
+          paging: true,
+          perPage: 20,
+          columns: [
+            { select: 0, sort: "desc" }, // Ordena a primeira coluna em ordem ascendente
+          ],
+          labels: {
+            placeholder: "Pesquisar...", // Texto do placeholder da barra de pesquisa
+            perPage: "{select} resultados por página", // Texto da seleção de itens por página
+            noRows: "Nenhum resultado encontrado", // Texto quando não há resultados
+            info: "Mostrando {start} a {end} de {rows} resultados", // Texto de informações
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

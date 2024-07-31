@@ -32,7 +32,12 @@
         <tbody>
             {% for livro in lista_de_livros %}
             <tr>
-                <td>{{livro}}</td>
+                <td>{{livro.titulo}}</td>
+                <td>{{livro.autor}}</td>
+                <td>{{livro.categoria}}</td>
+                <td>{{livro.ano}}</td>
+                <td>{{livro.editora}}</td>
+                <td>{{livro.ativo}}</td>
             </tr>
             {% endfor %}
         </tbody>
