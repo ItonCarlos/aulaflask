@@ -24,7 +24,7 @@ def ola():
     livro3 = Livro("O Alquimista", "Paulo Coelho", "Autoajuda", 1988, "Rocco")
     #lista = ["O Senhor dos Anéis", "Dom Casmurro", "O Alquimista"]
     lista = [livro1,livro2, livro3]
-    return render_template('lista.html', titulo='Listagem de Livros - SENAI',lista_de_livros=lista)
+    return render_template('lista.html', titulo='TITULO',lista_de_livros=lista)
 
 @app.route('/curriculo')
 def curriculo():
