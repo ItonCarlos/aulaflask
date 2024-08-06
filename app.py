@@ -72,7 +72,7 @@ def atualizar_editora():
         nova_editora = request.form['editora']
         
         # Carregar livros
-        livros = carregar_livros() # type: ignore
+        #livros = carregar_livros(): 
 
         # Atualizar editora
         for livro in livros:
